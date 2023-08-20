@@ -7,14 +7,13 @@ from warnings import filterwarnings
 from os.path import join, dirname, isfile, exists
 from datetime import datetime
 
-
 fileHandler = open(f"logs_{datetime.now().strftime('%Y%m%d%H%M%S')}.txt", 'a')
-
 
 iconFile = join(dirname(__file__), 'listing.ico')
 aboutIcon = join(dirname(__file__), 'info.ico')
 
 sourcePath = ''
+
 
 def threadingFileDialog(pathEntry, fileDialogBtn, submitBtn, messageText, progressBar, progressStyle):
     thread_btn2 = Thread(target=FileDialog, args=(pathEntry, fileDialogBtn, submitBtn, messageText, progressBar,
@@ -84,7 +83,7 @@ def FileListing(messageText, submitBtn, fileDialogBtn, progressBar, window, prog
             excelFIleCounter = excelFIleCounter + 1
         excelFile.save(excelFileName)
         fileHandler.write(f'{datetime.now().replace(microsecond=0)}Listing Done for\nGrand_Total: [{listingSuccess}]\n'
-                          f'Directories/Subdirectories : [{listingSuccess-fileListed}]\n'
+                          f'Directories/Subdirectories : [{listingSuccess - fileListed}]\n'
                           f'Total_Files : [{fileListed}]\n')
         fileHandler.write(
             f"{datetime.now().replace(microsecond=0)}[{excelFileName}] saved in current directory.\n")
@@ -126,8 +125,7 @@ def mainGUI():
     progress = Progressbar(window, length=340, mode="determinate", style="Custom.Horizontal.TProgressbar")
     progress.place(x=5, y=150)
     progressStyle = Style()
-    progressStyle.theme_use('default')
-    progressStyle.configure("Custom.Horizontal.TProgressbar", thickness=20, troughcolor='#E0E0E0', background='#4CAF50',
+    progressStyle.configure("Custom.Horizontal.TProgressbar", thickness=20, troughcolor='gray88', background='light green',
                             troughrelief='flat', relief='flat', text='0 %')
     progressStyle.layout('Custom.Horizontal.TProgressbar', [('Horizontal.Progressbar.trough',
                                                              {'children': [('Horizontal.Progressbar.pbar',
@@ -140,6 +138,7 @@ def mainGUI():
     aboutBtn.place(x=338, y=207)
     window.mainloop()
 
+
 def aboutWindow(mainWin):
     aboutWin = Toplevel(mainWin)
     aboutWin.grab_set()
@@ -151,5 +150,6 @@ def aboutWindow(mainWin):
                                          f'below email\nEmail : chandelpriyanshu8@outlook.com\nMobile : '
                                          f'+91-8285775109 '
                                          f'', font=('Helvetica', 9)).place(x=1, y=6)
+
 
 mainGUI()
