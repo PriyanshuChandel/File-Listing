@@ -104,7 +104,7 @@ def updateProgress(listingSuccess, progressBar, totalFiles, window, progressStyl
 def mainGUI():
     window = Tk()
     window.config(bg='light grey')
-    window.title('File Listing v1.0')
+    window.title('File Listing v1.1')
     window.geometry('357x235')
     window.resizable(False, False)
     window.iconbitmap(iconFile)
@@ -125,7 +125,8 @@ def mainGUI():
     progress = Progressbar(window, length=340, mode="determinate", style="Custom.Horizontal.TProgressbar")
     progress.place(x=5, y=150)
     progressStyle = Style()
-    progressStyle.configure("Custom.Horizontal.TProgressbar", thickness=20, troughcolor='gray88', background='light green',
+    progressStyle.theme_use('default')
+    progressStyle.configure("Custom.Horizontal.TProgressbar", thickness=20, troughcolor='#E0E0E0', background='#4CAF50',
                             troughrelief='flat', relief='flat', text='0 %')
     progressStyle.layout('Custom.Horizontal.TProgressbar', [('Horizontal.Progressbar.trough',
                                                              {'children': [('Horizontal.Progressbar.pbar',
@@ -146,7 +147,7 @@ def aboutWindow(mainWin):
     aboutWin.resizable(False, False)
     aboutWin.title('About')
     aboutWin.iconbitmap(aboutIcon)
-    aboutWinLabel = Label(aboutWin, text=f'Version - 1.0\nDeveloped by Priyanshu\nFor any improvement please reach on '
+    aboutWinLabel = Label(aboutWin, text=f'Version - 1.1\nDeveloped by Priyanshu\nFor any improvement please reach on '
                                          f'below email\nEmail : chandelpriyanshu8@outlook.com\nMobile : '
                                          f'+91-8285775109 '
                                          f'', font=('Helvetica', 9)).place(x=1, y=6)
